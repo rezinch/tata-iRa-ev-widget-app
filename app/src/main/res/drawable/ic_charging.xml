@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="20dp"
+    android:viewportWidth="32"
+    android:viewportHeight="20">
+    <!-- Speed lines left -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#00A3A1"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M2,8 L8,8" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#00A3A1"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M0,12 L6,12" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#4D00A3A1"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M2,16 L6,16" />
+    <!-- Battery body -->
+    <path
+        android:fillColor="#00A3A1"
+        android:pathData="M10,3 L28,3 Q30,3 30,5 L30,15 Q30,17 28,17 L10,17 Q8,17 8,15 L8,5 Q8,3 10,3Z" />
+    <!-- Battery terminal -->
+    <path
+        android:fillColor="#00A3A1"
+        android:pathData="M30,7 L32,7 L32,13 L30,13Z" />
+    <!-- Lightning bolt -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M21,5L16,11h4.5L18,17l7,-8h-4.5L21,5z" />
+</vector>

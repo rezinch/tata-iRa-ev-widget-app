@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="tata_teal">#00A3A1</color>
+    <color name="widget_background_dark">#D9121212</color>
+    <color name="widget_background_solid">#1A1A1A</color>
+    <color name="widget_text_primary">#FFFFFF</color>
+    <color name="widget_text_secondary">#A0A0A0</color>
+    <color name="error_red">#CF6679</color>
+    <color name="ic_launcher_bg">#2A5C45</color>
+</resources>

@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <!-- ═══ HEADER ═══ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Left: Ignition status -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvWidgetIgnition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OFF"
+                android:textColor="#AAAAAA"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Center: Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="iRA.ev"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Right: Charging badge + Refresh -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|end">
+
+            <ImageView
+                android:id="@+id/ivChargingBadge"
+                android:layout_width="30dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="6dp"
+                android:src="@drawable/ic_charging"
+                android:visibility="gone"
+                android:contentDescription="Charging" />
+
+            <ImageView
+                android:id="@+id/btnWidgetRefresh"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_refresh"
+                android:tint="#AAAAAA"
+                android:contentDescription="Refresh" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal">
+
+        <!-- CAR IMAGE (shown when opted in) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivVehicleImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:visibility="gone"
+                android:contentDescription="Car" />
+        </LinearLayout>
+
+        <!-- BATTERY BLOCK -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BATTERY"
+                android:textColor="#888888"
+                android:textSize="9sp"
+                android:letterSpacing="0.08" />
+
+            <!-- Battery % on a single line -->
+            <TextView
+                android:id="@+id/tvWidgetBattery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--%"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:singleLine="true"
+                android:layout_marginTop="1dp" />
+
+            <!-- Battery bar -->
+            <ProgressBar
+                android:id="@+id/pbBattery"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="8dp"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/battery_progress" />
+
+            <!-- Charging time -->
+            <TextView
+                android:id="@+id/tvWidgetCharging"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#AAAAAA"
+                android:textSize="10sp"
+                android:layout_marginTop="3dp"
+                android:singleLine="true"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!-- VERTICAL DIVIDER -->
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#28FFFFFF"
+            android:text="" />
+
+        <!-- ODOMETER + RANGE BLOCK -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="4dp">
+
+            <!-- Odometer -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_road"
+                    android:layout_marginEnd="5dp"
+                    android:contentDescription="Odo" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ODOMETER"
+                        android:textColor="#888888"
+                        android:textSize="8sp"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:id="@+id/tvWidgetOdo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-- km"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:singleLine="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Separator -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#1AFFFFFF"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:text="" />
+
+            <!-- Range -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_range"
+                    android:layout_marginEnd="5dp"
+                    android:contentDescription="Range" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RANGE"
+                        android:textColor="#888888"
+                        android:textSize="8sp"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:id="@+id/tvWidgetSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-- km"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:singleLine="true" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- VERTICAL DIVIDER -->
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#28FFFFFF"
+            android:text="" />
+
+        <!-- CABIN TEMP BLOCK -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.85"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CABIN"
+                android:textColor="#888888"
+                android:textSize="8sp"
+                android:letterSpacing="0.08"
+                android:layout_gravity="center_horizontal" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="42dp"
+                android:src="@drawable/ic_temp_gauge"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="2dp"
+                android:contentDescription="Temp gauge" />
+
+            <TextView
+                android:id="@+id/tvWidgetTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--°C"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:singleLine="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- ═══ FOOTER DIVIDER ═══ -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#1AFFFFFF"
+        android:layout_marginTop="6dp"
+        android:text="" />
+
+    <!-- ═══ FOOTER ═══ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/ic_pin"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="Location" />
+
+        <TextView
+            android:id="@+id/tvWidgetLocation"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Searching location..."
+            android:textColor="#AAAAAA"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tvWidgetUpdated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last sync: --:--"
+            android:textColor="#555555"
+            android:textSize="9sp" />
+    </LinearLayout>
+
+</LinearLayout>
